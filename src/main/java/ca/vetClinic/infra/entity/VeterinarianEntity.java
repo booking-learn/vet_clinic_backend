@@ -2,12 +2,14 @@ package ca.vetClinic.infra.entity;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "veterinarian")
 public class VeterinarianEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -45,9 +47,10 @@ public class VeterinarianEntity {
 	public void setSpecialty(String specialty) {
 		this.specialty = specialty;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-	}
+    public UUID getId() {
+        return id;
+    }
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }

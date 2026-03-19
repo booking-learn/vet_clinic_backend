@@ -2,12 +2,14 @@ package ca.vetClinic.infra.entity;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "service")
 public class ServiceEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 	private String name;
 	private String description;
 	private double price;
@@ -21,10 +23,10 @@ public class ServiceEntity {
 		this.price = price;
 		this.duration = duration;
 	}
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public String getName() {
