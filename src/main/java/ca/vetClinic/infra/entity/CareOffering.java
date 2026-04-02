@@ -1,27 +1,31 @@
 package ca.vetClinic.infra.entity;
 
+import ca.vetClinic.domain.model.CareService;
 import jakarta.persistence.*;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "service")
-public class ServiceEntity {
+@Table(name = "careOffering")
+public class CareOffering {
 	@Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private UUID id;
 	private String name;
 	private String description;
 	private double price;
 	private int duration;
+	@Enumerated(EnumType.STRING)
+	private CareService careService;
 
-	public ServiceEntity() {
+	public CareOffering() {
 	}
-	public ServiceEntity(String name, String description, double price, int duration) {
+	public CareOffering(String name, String description, double price, int duration, CareService careService) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.duration = duration;
+		this.careService = careService;
 	}
 	public UUID getId() {
 		return id;
@@ -54,4 +58,11 @@ public class ServiceEntity {
 		this.duration = duration;
 	}
 
+	public CareService getCareService() {
+		return careService;
+	}
+
+	public void setCareService(CareService careService) {
+		this.careService = careService;
+	}
 }
