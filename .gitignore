@@ -1,9 +1,12 @@
-### Spring Boot ###
+### Maven###
 .mvn/
 HELP.md
 target/
 !**/src/main/**/target/
 !**/src/test/**/target/
+mvnw.cmd
+.gitattributes
+mvnw
 
 ### Maven ###
 pom.xml.tag
