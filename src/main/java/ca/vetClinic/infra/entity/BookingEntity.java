@@ -36,7 +36,7 @@ public class BookingEntity {
 		this.notes = notes;
 	}
 
-    public BookingEntity() {
+	public BookingEntity() {
 	}
 
 }

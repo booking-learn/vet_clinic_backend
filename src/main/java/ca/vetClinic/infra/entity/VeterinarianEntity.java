@@ -1,6 +1,6 @@
 package ca.vetClinic.infra.entity;
 
-import ca.vetClinic.domain.model.EmployeRole;
+import ca.vetClinic.domain.model.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,13 +13,12 @@ public class VeterinarianEntity extends EmployeEntity {
 
 	private String specialty;
 
-
 	public VeterinarianEntity() {
 	}
 
-
-    public VeterinarianEntity(String firstName, String lastName, String email,String password, EmployeRole role , String specialty) {
-		super(firstName, lastName, email,password,role);
+	public VeterinarianEntity(String firstName, String lastName, String email, String password, Role role,
+			String specialty) {
+		super(firstName, lastName, email, password, role);
 		this.specialty = specialty;
 	}
 
