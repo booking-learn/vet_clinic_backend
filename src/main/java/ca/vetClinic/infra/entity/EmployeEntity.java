@@ -1,13 +1,19 @@
 package ca.vetClinic.infra.entity;
 
+import ca.vetClinic.domain.model.EmployeRole;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "employee")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "employee_type", discriminatorType = DiscriminatorType.STRING)
-public abstract class EmployeEntity {
+public class EmployeEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -16,41 +22,19 @@ public abstract class EmployeEntity {
 	private String firstName;
 	private String lastName;
 	private String email;
+    private String password;
+    @Enumerated(EnumType.STRING)
+    private EmployeRole role;
 
 	public EmployeEntity() {
 	}
 
-	public EmployeEntity(String firstName, String lastName, String email) {
+    public EmployeEntity(String firstName, String lastName, String email, String password, EmployeRole role) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+        this.password = password;
+        this.role = role;
 	}
 
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 }

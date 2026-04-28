@@ -1,11 +1,15 @@
 package ca.vetClinic.infra.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "timeSlot")
 public class TimeSlotEntity {
@@ -29,50 +33,4 @@ public class TimeSlotEntity {
 		this.available = available;
 	}
 
-	public boolean isAvailable() {
-		return available;
-	}
-
-	public void setAvailable(boolean available) {
-		this.available = available;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public LocalTime getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(LocalTime endTime) {
-		this.endTime = endTime;
-	}
-
-	public LocalTime getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
-	}
-
-	public UUID getVetenerianId() {
-		return vetenerianId;
-	}
-
-	public void setVetenerianId(UUID vetenerianId) {
-		this.vetenerianId = vetenerianId;
-	}
-
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
 }

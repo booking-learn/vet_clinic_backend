@@ -2,9 +2,13 @@ package ca.vetClinic.infra.entity;
 
 import ca.vetClinic.domain.model.CareService;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "careOffering")
 public class CareOffering {
@@ -27,42 +31,5 @@ public class CareOffering {
 		this.duration = duration;
 		this.careService = careService;
 	}
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	public int getDuration() {
-		return duration;
-	}
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
 
-	public CareService getCareService() {
-		return careService;
-	}
-
-	public void setCareService(CareService careService) {
-		this.careService = careService;
-	}
 }

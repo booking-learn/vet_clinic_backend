@@ -1,11 +1,15 @@
 package ca.vetClinic.infra.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "booking")
 public class BookingEntity {
@@ -32,77 +36,7 @@ public class BookingEntity {
 		this.notes = notes;
 	}
 
-	public UUID getTimeSlotId() {
-		return timeSlotId;
+    public BookingEntity() {
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public Instant getBookingCreatedAt() {
-		return bookingCreatedAt;
-	}
-
-	public void setBookingCreatedAt(Instant bookingCreatedAt) {
-		this.bookingCreatedAt = bookingCreatedAt;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public void setTimeSlotId(UUID timeSlotId) {
-		this.timeSlotId = timeSlotId;
-	}
-
-	public UUID getServiceId() {
-		return serviceId;
-	}
-
-	public UUID getPetId() {
-		return petId;
-	}
-
-	public UUID getVeterinarianId() {
-		return veterinarianId;
-	}
-
-	public void setVeterinarianId(UUID veterinarianId) {
-		this.veterinarianId = veterinarianId;
-	}
-
-	public void setPetId(UUID petId) {
-		this.petId = petId;
-	}
-
-	public void setServiceId(UUID serviceId) {
-		this.serviceId = serviceId;
-	}
-
-	public UUID getUserId() {
-		return userId;
-	}
-
-	public void setUserId(UUID userId) {
-		this.userId = userId;
-	}
-
-	public BookingEntity() {
-	}
-
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
 }
