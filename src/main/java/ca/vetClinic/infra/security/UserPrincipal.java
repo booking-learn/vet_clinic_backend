@@ -1,8 +1,9 @@
 package ca.vetClinic.infra.security;
 
+import ca.vetClinic.domain.model.Employe;
 import ca.vetClinic.domain.model.Role;
+import ca.vetClinic.domain.model.User;
 import ca.vetClinic.infra.entity.EmployeEntity;
-import ca.vetClinic.infra.entity.UserEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.jspecify.annotations.Nullable;
@@ -21,11 +22,11 @@ public class UserPrincipal implements UserDetails {
 	private final String password;
 	private final Role role;
 
-	public static UserPrincipal fromUser(UserEntity user) {
+	public static UserPrincipal fromUser(User user) {
 		return new UserPrincipal(user.getId(), user.getEmail(), user.getPassword(), Role.USER);
 	}
 
-	public static UserPrincipal fromEmployee(EmployeEntity employee) {
+	public static UserPrincipal fromEmployee(Employe employee) {
 		return new UserPrincipal(employee.getId(), employee.getEmail(), employee.getPassword(), employee.getRole());
 	}
 	@Override
