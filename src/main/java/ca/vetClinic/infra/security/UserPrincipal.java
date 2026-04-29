@@ -3,10 +3,9 @@ package ca.vetClinic.infra.security;
 import ca.vetClinic.domain.model.Employe;
 import ca.vetClinic.domain.model.Role;
 import ca.vetClinic.domain.model.User;
-import ca.vetClinic.infra.entity.EmployeEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import org.jspecify.annotations.Nullable;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserPrincipal implements UserDetails {
 	private final UUID id;
@@ -32,11 +32,6 @@ public class UserPrincipal implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
-	}
-
-	@Override
-	public @Nullable String getPassword() {
-		return this.password;
 	}
 
 	@Override
