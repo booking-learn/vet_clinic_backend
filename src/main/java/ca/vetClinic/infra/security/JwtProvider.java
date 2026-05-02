@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.util.Base64;
 import java.util.Date;
 
 @Component
@@ -15,9 +14,10 @@ import java.util.Date;
 public class JwtProvider {
 
 	private final JwtProperties jwtProperties;
+	private final JwtKeyProvider jwtKeyProvider;
 
 	public String generateToken(UserPrincipal userPrincipal) {
-		SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtProperties.getSecret()));
+		SecretKey key = jwtKeyProvider.generate();
 		return Jwts.builder().subject(userPrincipal.getId().toString()).claim("email", userPrincipal.getEmail())
 				.claim("role", userPrincipal.getRole().name()).issuedAt(new Date())
 				.expiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration())).signWith(key)
