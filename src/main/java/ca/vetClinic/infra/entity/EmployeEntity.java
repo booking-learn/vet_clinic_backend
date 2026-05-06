@@ -12,29 +12,31 @@ import java.util.UUID;
 @Entity
 @Table(name = "employee")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "employee_type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "role", discriminatorType = DiscriminatorType.STRING)
 public class EmployeEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
-
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	private String phoneNumber;
 
 	public EmployeEntity() {
 	}
 
-	public EmployeEntity(String firstName, String lastName, String email, String password, Role role) {
+	public EmployeEntity(String firstName, String lastName, String email, String password, Role role,
+			String phoneNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.role = role;
+		this.phoneNumber = phoneNumber;
 	}
 
 }
